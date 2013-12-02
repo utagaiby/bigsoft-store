@@ -1,0 +1,2 @@
+bigsoft_store:
+    resource: "@BigsoftStoreBundle/Resources/config/routing.yml"
