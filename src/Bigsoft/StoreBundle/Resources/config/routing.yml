@@ -4,3 +4,6 @@ main:
 products_list:
   pattern: /products
   defaults: {_controller: BigsoftStoreBundle:Product:list}
+product_create:
+  pattern: /product/create
+  defaults: {_controller: BigsoftStoreBundle:Product:create}
