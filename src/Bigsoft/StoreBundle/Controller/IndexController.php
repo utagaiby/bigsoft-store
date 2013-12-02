@@ -17,7 +17,7 @@ class IndexController extends Controller
 
     public function indexAction()
     {
-        return new Response('<h1>Hello symfony</h1>');
+        return $this->render('BigsoftStoreBundle:index:index.html.twig');
     }
 
 } 
