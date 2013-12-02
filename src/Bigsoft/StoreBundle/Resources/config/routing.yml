@@ -1,3 +1,6 @@
 main:
   pattern: /
   defaults: {_controller: BigsoftStoreBundle:Index:index}
+products_list:
+  pattern: /products
+  defaults: {_controller: BigsoftStoreBundle:Product:list}

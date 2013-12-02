@@ -1,0 +1,19 @@
+Bigsoft\StoreBundle\Entity\Product:
+  type: entity
+  table: products
+  id:
+    id:
+      type: integer
+      generator: {strategy: AUTO}
+  fields:
+    title:
+      type: string
+      length: 512
+    description:
+      type: text
+    price:
+      type: decimal
+      scale: 3
+    imageUrl:
+      column: image_url
+      type: string

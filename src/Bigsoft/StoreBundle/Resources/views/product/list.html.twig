@@ -1,0 +1,8 @@
+{% extends 'BigsoftStoreBundle::layout.html.twig' %}
+{% block content %}
+    {% for product in products %}
+        <div>{{ product.getTitle() }}</div>
+    {% else %}
+        <div class="alert alert-warning">Sorry, no records found for your request</div>
+    {% endfor %}
+{% endblock %}
