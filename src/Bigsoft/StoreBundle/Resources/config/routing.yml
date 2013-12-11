@@ -10,3 +10,9 @@ product_create:
 product_edit:
   pattern: /product/edit/{id}
   defaults: {_controller: BigsoftStoreBundle:Product:edit}
+product_view:
+  pattern: /product/view/{id}
+  defaults: {_controller: BigsoftStoreBundle:Product:view}
+product_delete:
+  pattern: /product/delete/{id}
+  defaults: {_controller: BigsoftStoreBundle:Product:delete}

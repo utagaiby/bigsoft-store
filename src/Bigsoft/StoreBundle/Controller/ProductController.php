@@ -61,4 +61,28 @@ class ProductController extends Controller
         return $this->render('BigsoftStoreBundle:product:edit.html.twig', ['form' => $form->createView()]);
 
     }
+
+    public function viewAction($id)
+    {
+        $product =  $this->getDoctrine()->getManager()->getRepository('BigsoftStoreBundle:Product')->find($id);
+
+        if (null == $product) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('BigsoftStoreBundle:product:view.html.twig', ['product' => $product]);
+    }
+
+    public function deleteAction($id)
+    {
+        $product =  $this->getDoctrine()->getManager()->getRepository('BigsoftStoreBundle:Product')->find($id);
+
+        if (null == $product) {
+            throw $this->createNotFoundException();
+        }
+
+        $this->getDoctrine()->getManager()->remove($product);
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirect($this->generateUrl('products_list'));
+    }
 }
