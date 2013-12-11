@@ -11,6 +11,7 @@ namespace Bigsoft\StoreBundle\Controller;
 
 use Bigsoft\StoreBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Bigsoft\StoreBundle\Form\Type\ProductType;
 
 class ProductController extends Controller
 {
@@ -39,12 +40,7 @@ class ProductController extends Controller
 
     private function createProductForm(Product $product)
     {
-        return $this->createFormBuilder($product)
-            ->add('title', 'text')
-            ->add('description', 'text')
-            ->add('price', 'text')
-            ->add('imageUrl', 'text')
-            ->add('Save', 'submit')->getForm();
+        return $this->createForm(new ProductType(), $product);
     }
 
     public function editAction($id)
