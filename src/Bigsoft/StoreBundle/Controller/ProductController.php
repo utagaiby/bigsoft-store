@@ -27,10 +27,12 @@ class ProductController extends Controller
         $form = $this->createProductForm($product);
 
         if ('POST' == $this->getRequest()->getMethod()) {
-            $form->submit($this->getRequest());
-            $this->getDoctrine()->getManager()->persist($product);
-            $this->getDoctrine()->getManager()->flush();
-            return $this->redirect($this->generateUrl('products_list'));
+            $form->handleRequest($this->getRequest());
+            if ($form->isValid()){
+                $this->getDoctrine()->getManager()->persist($product);
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirect($this->generateUrl('products_list'));
+            }
         }
 
         return $this->render('BigsoftStoreBundle:product:create.html.twig', ['form' => $form->createView()]);
@@ -53,9 +55,11 @@ class ProductController extends Controller
         $form = $this->createProductForm($product);
 
         if ('POST' == $this->getRequest()->getMethod()) {
-            $form->submit($this->getRequest());
-            $this->getDoctrine()->getManager()->flush();
-            return $this->redirect($this->generateUrl('products_list'));
+            $form->handleRequest($this->getRequest());
+            if ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirect($this->generateUrl('products_list'));
+            }
         }
 
         return $this->render('BigsoftStoreBundle:product:edit.html.twig', ['form' => $form->createView()]);

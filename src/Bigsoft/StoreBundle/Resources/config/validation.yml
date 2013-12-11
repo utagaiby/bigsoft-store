@@ -1,0 +1,13 @@
+Bigsoft\StoreBundle\Entity\Product:
+  properties:
+    title:
+      - NotBlank: ~
+    description:
+      - NotBlank: ~
+    imageUrl:
+      - Url: ~
+      - NotBlank: ~
+    price:
+      - NotBlank: ~
+      - Range:
+          min: 0
