@@ -7,3 +7,6 @@ products_list:
 product_create:
   pattern: /product/create
   defaults: {_controller: BigsoftStoreBundle:Product:create}
+product_edit:
+  pattern: /product/edit/{id}
+  defaults: {_controller: BigsoftStoreBundle:Product:edit}

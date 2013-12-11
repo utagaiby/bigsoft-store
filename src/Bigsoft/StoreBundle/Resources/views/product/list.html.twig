@@ -1,8 +1,21 @@
 {% extends 'BigsoftStoreBundle::layout.html.twig' %}
 {% block content %}
-    {% for product in products %}
-        <div>{{ product.getTitle() }}</div>
-    {% else %}
-        <div class="alert alert-warning">Sorry, no records found for your request</div>
-    {% endfor %}
+    <div class="row row-with-margin">
+        <div class="col-md-4">
+            <a href="{{ path('product_create') }}" class="btn btn-primary">Create New Product</a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            {% for product in products %}
+                <tr>
+                    <td><img src="{{ asset('bundles/bigsoftstore/images/50x50.gif') }}"/></td>
+                    <td><a href="{{ path('product_edit', {'id' : product.getId()}) }}">{{ product.getTitle() }}</a></td>
+                    <td>{{ product.getPrice() }}</td>
+                </tr>
+            {% else %}
+                <div class="alert alert-warning">Sorry, no records found for your request</div>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

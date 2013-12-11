@@ -23,23 +23,46 @@ class ProductController extends Controller
     public function createAction()
     {
         $product = new Product();
-        $form = $this->createFormBuilder($product)
-            ->add('title', 'text')
-            ->add('description', 'text')
-            ->add('price', 'text')
-            ->add('imageUrl', 'text')
-            ->add('Save', 'submit')->getForm();
+        $form = $this->createProductForm($product);
 
         if ('POST' == $this->getRequest()->getMethod()) {
             $form->submit($this->getRequest());
-            $submittedProduct = $form->getData();
-            $this->getDoctrine()->getManager()->persist($submittedProduct);
+            $this->getDoctrine()->getManager()->persist($product);
             $this->getDoctrine()->getManager()->flush();
             return $this->redirect($this->generateUrl('products_list'));
         }
 
         return $this->render('BigsoftStoreBundle:product:create.html.twig', ['form' => $form->createView()]);
 
+
+    }
+
+    private function createProductForm(Product $product)
+    {
+        return $this->createFormBuilder($product)
+            ->add('title', 'text')
+            ->add('description', 'text')
+            ->add('price', 'text')
+            ->add('imageUrl', 'text')
+            ->add('Save', 'submit')->getForm();
+    }
+
+    public function editAction($id)
+    {
+        $product = $this->getDoctrine()->getManager()->getRepository('BigsoftStoreBundle:Product')->find($id);
+        if (null == $product) {
+            throw $this->createNotFoundException();
+        }
+
+        $form = $this->createProductForm($product);
+
+        if ('POST' == $this->getRequest()->getMethod()) {
+            $form->submit($this->getRequest());
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirect($this->generateUrl('products_list'));
+        }
+
+        return $this->render('BigsoftStoreBundle:product:edit.html.twig', ['form' => $form->createView()]);
 
     }
 }
