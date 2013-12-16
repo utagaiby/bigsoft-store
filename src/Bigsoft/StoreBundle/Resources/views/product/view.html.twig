@@ -3,7 +3,7 @@
     <div class="row row-with-margin">
         <div class="col-md-2">
             <img src="{{ asset('bundles/bigsoftstore/images/150x150.gif') }}">
-            <div class="lead row-with-margin">Price: ${{ product.getPrice() | number_format(2, '.', ',') }}</div>
+            <div class="lead row-with-margin">Price: {{ product.getPrice() | price }}</div>
         </div>
         <div class="col-md-6">
             <h2 class>{{ product.getTitle() }}</h2>

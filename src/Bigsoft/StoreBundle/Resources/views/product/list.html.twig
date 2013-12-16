@@ -15,7 +15,7 @@
                             <a href="{{ path('product_view', {'id' : product.getId()}) }}">{{ product.getTitle() }}</a>
                         </div>
                     </td>
-                    <td>$ {{ product.getPrice()|number_format(2, '.', ',') }}</td>
+                    <td>{{ product.getPrice()|price }}</td>
                     <td>
                         <a href="{{ path('product_edit', {'id' : product.getId()}) }}">
                             <span class="glyphicon glyphicon-edit"></span>
