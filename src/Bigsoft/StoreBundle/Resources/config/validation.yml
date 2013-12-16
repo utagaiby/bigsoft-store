@@ -2,6 +2,7 @@ Bigsoft\StoreBundle\Entity\Product:
   properties:
     title:
       - NotBlank: ~
+      - Bigsoft\StoreBundle\Validator\Constraint\UniqueTitleConstraint: ~
     description:
       - NotBlank: ~
     imageUrl:

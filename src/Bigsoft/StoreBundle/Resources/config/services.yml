@@ -1,0 +1,6 @@
+services:
+  validator.unique_title:
+    class: Bigsoft\StoreBundle\Validator\Constraint\UniqueTitleConstraintValidator
+    arguments: ['@doctrine']
+    tags:
+      - {name: validator.constraint_validator, alias: unique_title}
