@@ -1,0 +1,19 @@
+Bigsoft\StoreBundle\Entity\CartItem:
+  type: entity
+  table: cart_items
+  id:
+    id:
+      type: integer
+      generator: {strategy: AUTO}
+  manyToOne:
+    cart:
+      targetEntity: Cart
+      inversedBy: items
+      joinColumn:
+        cart_id:
+          referencedColumnName: id
+    product:
+      targetEntity: Product
+      joinColumn:
+        product_id:
+          referencedColumnName: id

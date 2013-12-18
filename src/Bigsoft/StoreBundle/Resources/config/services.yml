@@ -8,3 +8,6 @@ services:
     class: Bigsoft\StoreBundle\Twig\MoneyFormatExtension
     tags:
       - {name: twig.extension}
+  bigsoft.cart:
+    class: Bigsoft\StoreBundle\Service\Cart
+    arguments: ['@doctrine', '@session']

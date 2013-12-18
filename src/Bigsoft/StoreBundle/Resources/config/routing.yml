@@ -16,3 +16,6 @@ product_view:
 product_delete:
   pattern: /product/delete/{id}
   defaults: {_controller: BigsoftStoreBundle:Product:delete}
+cart_add:
+  pattern: /cart/add/{id}
+  defaults: {_controller: BigsoftStoreBundle:Cart:add}
