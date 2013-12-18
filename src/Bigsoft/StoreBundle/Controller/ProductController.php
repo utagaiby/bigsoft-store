@@ -85,8 +85,16 @@ class ProductController extends Controller
             throw $this->createNotFoundException();
         }
 
-        $this->getDoctrine()->getManager()->remove($product);
-        $this->getDoctrine()->getManager()->flush();
+        $cartItems = $this->getDoctrine()->getRepository('BigsoftStoreBundle:CartItem')->findBy(['product' => $product]);
+
+        if ($cartItems) {
+            $this->get('session')->getFlashBag()->add('error', 'There are cart items for product ' . $product->getTitle());
+        } else {
+            $this->getDoctrine()->getManager()->remove($product);
+            $this->getDoctrine()->getManager()->flush();
+        }
+
         return $this->redirect($this->generateUrl('products_list'));
+
     }
 }

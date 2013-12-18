@@ -1,0 +1,13 @@
+{% extends 'BigsoftStoreBundle::layout.html.twig' %}
+{% block content %}
+    <h1>Your cart:</h1>
+    {% if items %}
+        <ul>
+            {% for item in items %}
+                <li>{{ item.getProduct().getTitle() }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div>Your cart is empty</div>
+    {% endif %}
+{% endblock %}
