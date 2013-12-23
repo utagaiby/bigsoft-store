@@ -22,3 +22,6 @@ cart_add:
 cart_show:
   pattern: /cart/show
   defaults: {_controller: BigsoftStoreBundle:Cart:showItems}
+cart_clear:
+  pattern: /cart/clear
+  defaults: {_controller: BigsoftStoreBundle:Cart:clear}

@@ -25,10 +25,16 @@ class CartController extends Controller
         return $this->redirect($this->generateUrl('product_view', ['id' => $product->getId()]));
     }
 
+    public function clearAction()
+    {
+        $this->get('bigsoft.cart')->clearCurrentCart();
+        return $this->redirect($this->generateUrl('cart_show'));
+    }
+
     public function showItemsAction()
     {
         $cart = $this->get('bigsoft.cart')->getCurrentCart();
-        return $this->render('BigsoftStoreBundle:cart:showItems.html.twig', ['items' => $cart->getItems()->toArray()]);
+        return $this->render('BigsoftStoreBundle:cart:showItems.html.twig', ['cart' => $cart]);
     }
 
 } 

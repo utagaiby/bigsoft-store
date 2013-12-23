@@ -23,8 +23,10 @@
             {{ flashMessage }}
         </div>
     {% endfor %}
-
-    {% block content %}{% endblock %}
+    <div class="row">
+        <div class="col-md-3">{% render path('cart_show') %}</div>
+        <div class="col-md-9">{% block content %}{% endblock %}</div>
+    </div>
 </div>
 {% endblock %}
 

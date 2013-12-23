@@ -1,11 +1,11 @@
 {% extends 'BigsoftStoreBundle::layout.html.twig' %}
 {% block content %}
     <div class="row row-with-margin">
-        <div class="col-md-2">
+        <div class="col-md-3">
             <img src="{{ asset('bundles/bigsoftstore/images/150x150.gif') }}">
             <div class="lead row-with-margin">Price: {{ product.getPrice() | price }} <a class="btn btn-success" href="{{ path('cart_add', {'id': product.getId()}) }}">Add to cart</a> </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <h2 class>{{ product.getTitle() }}</h2>
             <p>{{ product.getDescription() }}</p>
         </div>

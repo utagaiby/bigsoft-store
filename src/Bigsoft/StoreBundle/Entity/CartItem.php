@@ -19,6 +19,8 @@ class CartItem
     /** @var  Product */
     private $product;
 
+    private $quantity;
+
     /**
      * @param \Bigsoft\StoreBundle\Entity\Cart $cart
      */
@@ -67,5 +69,24 @@ class CartItem
         return $this->product;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
 
-} 
+    /**
+     * @param mixed $quantity
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    public function calculateTotalPrice()
+    {
+        return $this->quantity * $this->getProduct()->getPrice();
+    }
+}

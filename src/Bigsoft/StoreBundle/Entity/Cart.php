@@ -57,4 +57,26 @@ class Cart
     {
         $this->items->add($item);
     }
+
+    public function calculateTotalPrice()
+    {
+        $totalPrice = 0;
+
+        foreach ($this->items as $item) {
+            $totalPrice += $item->calculateTotalPrice();
+        }
+
+        return $totalPrice;
+    }
+
+    public function findCartItemForProduct(Product $product)
+    {
+        foreach ($this->items as $item) {
+            if ($item->getProduct()->getId() == $product->getId()) {
+                return $item;
+            }
+        }
+
+        return null;
+    }
 } 

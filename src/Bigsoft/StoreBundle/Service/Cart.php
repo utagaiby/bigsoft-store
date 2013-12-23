@@ -50,14 +50,28 @@ class Cart
 
     public function addProductToCart(Product $product)
     {
-        $cartItem = new CartItem();
-        $cartItem->setProduct($product);
         $currentCart = $this->getCurrentCart();
-        $cartItem->setCart($currentCart);
-        $currentCart->addItem($cartItem);
+
+        if ($cartItem = $currentCart->findCartItemForProduct($product)) {
+            $cartItem->setQuantity($cartItem->getQuantity() + 1);
+        } else {
+            $cartItem = new CartItem();
+            $cartItem->setProduct($product);
+            $cartItem->setCart($currentCart);
+            $currentCart->addItem($cartItem);
+            $cartItem->setQuantity(1);
+        }
 
         $em = $this->doctrine->getManager();
         $em->persist($cartItem);
         $em->flush();
+    }
+
+    public function clearCurrentCart()
+    {
+        foreach ($this->getCurrentCart()->getItems() as $item) {
+            $this->doctrine->getManager()->remove($item);
+        }
+        $this->doctrine->getManager()->flush();
     }
 } 

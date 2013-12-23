@@ -1,13 +1,11 @@
-{% extends 'BigsoftStoreBundle::layout.html.twig' %}
-{% block content %}
-    <h1>Your cart:</h1>
-    {% if items %}
-        <ul>
-            {% for item in items %}
-                <li>{{ item.getProduct().getTitle() }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <div>Your cart is empty</div>
+    {% if cart.getItems().count() %}
+        <div class="row-with-margin">
+            <ul>
+                {% for item in cart.getItems() %}
+                    <li>{{ item.getQuantity() }} &times; {{ item.getProduct().getTitle() }} {{ item.calculateTotalPrice() | price }}</li>
+                {% endfor %}
+            </ul>
+            <div>Total: {{ cart.calculateTotalPrice() | price }}</div>
+            <div class="row-with-margin"><a href="{{ path('cart_clear') }}" class="btn btn-danger">Clear cart</a> </div>
+        </div>
     {% endif %}
-{% endblock %}

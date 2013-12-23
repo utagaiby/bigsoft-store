@@ -5,6 +5,9 @@ Bigsoft\StoreBundle\Entity\CartItem:
     id:
       type: integer
       generator: {strategy: AUTO}
+  fields:
+    quantity:
+      type: integer
   manyToOne:
     cart:
       targetEntity: Cart
