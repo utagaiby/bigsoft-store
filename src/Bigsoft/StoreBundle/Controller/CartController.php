@@ -55,6 +55,7 @@ class CartController extends Controller
             $form->submit($request);
             if ($form->isValid()) {
                 $this->get('bigsoft.cart')->moveCartItemsToOrder($order);
+                $this->get('bigsoft.mailing')->sendOrderCreatedMessage($order);
                 $this->getDoctrine()->getManager()->persist($order);
                 $this->getDoctrine()->getManager()->flush();
                 $this->get('session')->getFlashBag()->add('success', 'Your order was successfully created');

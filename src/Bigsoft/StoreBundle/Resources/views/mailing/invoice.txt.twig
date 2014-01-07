@@ -1,0 +1,9 @@
+INVOICE FROM BIGSOFT STORE
+
+Items:
+
+{% for item in order.getItems() %}
+    {{ item.getQuantity() }} x {{ item.getProduct().getTitle() }} {{ item.calculateTotalPrice() | price }}
+{% endfor %}
+
+Total Price: {{ order.calculateTotalPrice() | price }}

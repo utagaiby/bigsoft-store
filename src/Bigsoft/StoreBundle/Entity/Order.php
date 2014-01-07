@@ -117,5 +117,21 @@ class Order {
         }
     }
 
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    public function calculateTotalPrice()
+    {
+        $totalPrice = 0;
+
+        foreach ($this->items as $item) {
+            $totalPrice += $item->calculateTotalPrice();
+        }
+
+        return $totalPrice;
+    }
+
 
 } 

@@ -1,0 +1,7 @@
+Hello, {{ order.getName() }}
+Bigsoft Store team thanks you for your order.
+You ordered:
+{% for item in order.getItems() %}
+    {{ item.getQuantity() }} x {{ item.getProduct().getTitle() }} {{ item.calculateTotalPrice() | price }}
+{% endfor %}
+We will notify you with another email, when your order will be sent.

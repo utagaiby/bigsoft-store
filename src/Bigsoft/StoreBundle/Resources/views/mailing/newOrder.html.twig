@@ -1,0 +1,9 @@
+<h1>Hello, {{ order.getName() }}</h1>
+<p>Bigsoft Store team thanks you for your order.</p>
+<p>You ordered:</p>
+<ul>
+    {% for item in order.getItems() %}
+       <li>{{ item.getQuantity() }} x {{ item.getProduct().getTitle() }} {{ item.calculateTotalPrice() | price }}</li>
+    {% endfor %}
+</ul>
+<p>We will notify you with another email, when your order will be sent.</p>
