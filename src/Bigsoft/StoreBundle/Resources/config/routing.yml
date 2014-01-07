@@ -28,3 +28,10 @@ cart_clear:
 checkout:
   pattern: /checkout
   defaults: {_controller: BigsoftStoreBundle:Cart:checkout}
+login:
+  path: /login
+  defaults: {_controller: BigsoftStoreBundle:Security:login}
+login_check:
+  path: /login_check
+logout:
+  path: /logout

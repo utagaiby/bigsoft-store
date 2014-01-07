@@ -17,12 +17,14 @@
                     </td>
                     <td>{{ product.getPrice()|price }}</td>
                     <td>
-                        <a href="{{ path('product_edit', {'id' : product.getId()}) }}">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="{{ path('product_delete', {'id' : product.getId()}) }}">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('product_edit', {'id' : product.getId()}) }}">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                            <a href="{{ path('product_delete', {'id' : product.getId()}) }}">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        {% endif %}
                     </td>
                 </tr>
             {% else %}
