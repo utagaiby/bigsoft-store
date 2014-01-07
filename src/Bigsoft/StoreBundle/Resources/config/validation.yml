@@ -12,3 +12,12 @@ Bigsoft\StoreBundle\Entity\Product:
       - NotBlank: ~
       - Range:
           min: 0
+Bigsoft\StoreBundle\Entity\Order:
+  properties:
+    email:
+      - NotBlank: ~
+      - Email: ~
+    name:
+      - NotBlank: ~
+    address:
+      - NotBlank: ~

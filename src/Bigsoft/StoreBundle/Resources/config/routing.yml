@@ -25,3 +25,6 @@ cart_show:
 cart_clear:
   pattern: /cart/clear
   defaults: {_controller: BigsoftStoreBundle:Cart:clear}
+checkout:
+  pattern: /checkout
+  defaults: {_controller: BigsoftStoreBundle:Cart:checkout}

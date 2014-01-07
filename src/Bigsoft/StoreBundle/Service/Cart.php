@@ -10,6 +10,7 @@ namespace Bigsoft\StoreBundle\Service;
 
 
 use Bigsoft\StoreBundle\Entity\CartItem;
+use Bigsoft\StoreBundle\Entity\Order;
 use Bigsoft\StoreBundle\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -73,5 +74,22 @@ class Cart
             $this->doctrine->getManager()->remove($item);
         }
         $this->doctrine->getManager()->flush();
+    }
+
+    public function moveCartItemsToOrder(Order $order)
+    {
+        $order->addCartItems($this->getCurrentCart()->getItems());
+        $this->disconnectCartItemsFromCart();
+    }
+
+    private function disconnectCartItemsFromCart()
+    {
+        $currentCart = $this->getCurrentCart();
+
+        foreach ($currentCart->getItems() as $item) {
+            $item->setCart(null);
+        }
+
+        $currentCart->resetCart();
     }
 } 

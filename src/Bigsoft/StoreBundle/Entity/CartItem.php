@@ -21,10 +21,13 @@ class CartItem
 
     private $quantity;
 
+    /** @var  Order */
+    private $order;
+
     /**
      * @param \Bigsoft\StoreBundle\Entity\Cart $cart
      */
-    public function setCart(Cart $cart)
+    public function setCart($cart)
     {
         $this->cart = $cart;
     }
@@ -89,4 +92,22 @@ class CartItem
     {
         return $this->quantity * $this->getProduct()->getPrice();
     }
+
+    /**
+     * @param \Bigsoft\StoreBundle\Entity\Order $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+    /**
+     * @return \Bigsoft\StoreBundle\Entity\Order
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+
 }

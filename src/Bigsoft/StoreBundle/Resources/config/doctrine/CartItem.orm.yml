@@ -20,3 +20,9 @@ Bigsoft\StoreBundle\Entity\CartItem:
       joinColumn:
         product_id:
           referencedColumnName: id
+    order:
+      targetEntity: Order
+      inversedBy: items
+      joinColumn:
+        order_id:
+          rederencedColumnName: id

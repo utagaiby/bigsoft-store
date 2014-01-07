@@ -6,6 +6,9 @@
                 {% endfor %}
             </ul>
             <div>Total: {{ cart.calculateTotalPrice() | price }}</div>
-            <div class="row-with-margin"><a href="{{ path('cart_clear') }}" class="btn btn-danger">Clear cart</a> </div>
+            <div class="row-with-margin">
+                <a href="{{ path('checkout') }}" class="btn btn-primary">Checkout</a>
+                <a href="{{ path('cart_clear') }}" class="btn btn-danger">Clear cart</a>
+            </div>
         </div>
     {% endif %}

@@ -46,7 +46,7 @@ class Cart
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getItems()
     {
@@ -78,5 +78,15 @@ class Cart
         }
 
         return null;
+    }
+
+    public function isEmpty()
+    {
+        return $this->items->count() == 0;
+    }
+
+    public function resetCart()
+    {
+        $this->items = new ArrayCollection();
     }
 } 

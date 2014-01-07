@@ -1,0 +1,21 @@
+Bigsoft\StoreBundle\Entity\Order:
+  type: entity
+  table: orders
+  id:
+    id:
+      type: integer
+      generator: {strategy: AUTO}
+  fields:
+    email:
+      type: string
+    payType:
+      column: pay_type
+      type: string
+    name:
+      type: string
+    address:
+      type: string
+  oneToMany:
+    items:
+      targetEntity: CartItem
+      mappedBy: order
