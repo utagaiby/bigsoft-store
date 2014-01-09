@@ -1,0 +1,23 @@
+Bigsoft\StoreBundle\Entity\User:
+  type: entity
+  table: users
+  id:
+    id:
+      type: integer
+      generator: {strategy: AUTO}
+  fields:
+    firstName:
+      column: first_name
+      type: string
+    lastName:
+      column: last_name
+      type: string
+    email:
+      type: string
+    password:
+      type: string
+    address:
+      type: string
+    payType:
+      column: pay_type
+      type: string
