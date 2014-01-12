@@ -21,3 +21,15 @@ Bigsoft\StoreBundle\Entity\Order:
       - NotBlank: ~
     address:
       - NotBlank: ~
+Bigsoft\StoreBundle\Entity\User:
+  properties:
+    email:
+      - NotBlank: ~
+      - Email: ~
+    firstName:
+      - NotBlank: ~
+    lastName:
+      - NotBlank: ~
+    password:
+      - NotBlank: ~
+#      - Bigsoft\StoreBundle\Balidator\Constraint\Password: ~

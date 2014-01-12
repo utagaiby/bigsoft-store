@@ -133,5 +133,14 @@ class Order {
         return $totalPrice;
     }
 
+    public function copyDataFromUser(User $user)
+    {
+        $this->setPayType($user->getPayType());
+        $this->setAddress($user->getAddress());
+        $this->setPayType($user->getPayType());
+        $this->setName($user->getFirstName() . ' ' . $user->getLastName());
+        $this->setEmail($user->getEmail());
+    }
+
 
 } 

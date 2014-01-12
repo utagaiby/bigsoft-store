@@ -49,6 +49,11 @@ class CartController extends Controller
         }
 
         $order = new Order();
+
+        if ($this->getUser() != null && $this->get('security.context')->isGranted('ROLE_USER')) {
+            $order->copyDataFromUser($this->getUser());
+        }
+
         $form = $this->createForm(new OrderType(), $order);
 
         if ('POST' == $request->getMethod()) {
